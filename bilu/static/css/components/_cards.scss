@@ -1,0 +1,54 @@
+.containerz {
+    display: grid;
+
+    gap: 3rem; /*distanta intre randuri/coloane*/
+    padding-top: 3rem; /*de la banner pana la ea*/
+    background-color: white; /* For contrast */
+    color: black;
+  }
+  .card {
+    /* This will come in handy later to center the contents */
+    position: relative;
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  }
+  
+  .card .content {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+  }
+  
+  .card-stats {
+    grid-area: stats; 
+    display: grid;
+  
+    grid-template-rows: 1fr;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+  }
+  
+  
+  .card-stats .stat {
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+  }
+  
+ 

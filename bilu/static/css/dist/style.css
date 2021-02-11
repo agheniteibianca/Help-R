@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/*@mixin flex_center($direction){
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+header{
+    @include flex_center(column); 
+    background: $header_color;
+    button{
+        background: $button_color;
+    }
+}*/
+.navbar {
+  background-image: linear-gradient(to right, #FDDB27, #fde251);
+  min-height: 70px;
+}
+.navbar__brand {
+  color: black;
+  padding-top: 20px !important;
+  font-size: 50px !important;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700px;
+}
+.navbar__brand img {
+  padding-left: 40px;
+  width: 150px;
+  height: auto;
+}
+.navbar__toggler {
+  outline: none;
+}
+.navbar .nav-link {
+  color: #000000 !important;
+  font-weight: 600;
+  font-size: 25px;
+  float: right;
+  text-align: right;
+  line-height: 70px;
+}
+
+.searchbar {
+  margin: 15px;
+  height: 60px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.search_input {
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 450px;
+  caret-color: transparent;
+  line-height: 40px;
+}
+
+.searchbar:hover > .search_input {
+  padding: 0 10px;
+  width: 450px;
+  caret-color: black;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon {
+  background: white;
+  color: black;
+}
+
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+
+.containerz {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 230px));
+  gap: 3rem;
+  /*distanta intre randuri/coloane*/
+  padding-top: 3rem;
+  /*de la banner pana la ea*/
+  background-color: white;
+  /* For contrast */
+  color: black;
+}
+
+.card {
+  /* This will come in handy later to center the contents */
+  position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.15);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+.card .content {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card-stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: #fde251;
+}
+
+.card-stats .stat {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+}
+
+#banner {
+  background-image: linear-gradient(to right, #FDDB27, #fde251);
+  color: #fff;
+  padding-top: 2%;
+}
+#banner .promo-title {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700px;
+  font-size: 50px;
+  color: #000000;
+}
+
+#wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+#container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.banner-img {
+  width: 130%;
+}
+
+.classWithPad {
+  margin: 50px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.login-form {
+  width: 450px;
+  margin: auto;
+}
+
+.emp-profile {
+  padding: 3%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 0.5rem;
+  background: #eeeeee;
+}
+
+.profile-img {
+  text-align: center;
+}
+
+.profile-img img {
+  width: 50%;
+  height: 100%;
+}
+
+.profile-img .file {
+  position: relative;
+  overflow: hidden;
+  margin-top: -20%;
+  width: 70%;
+  border: none;
+  border-radius: 0;
+  font-size: 15px;
+  background: #212529b8;
+}
+
+.profile-img .file input {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
+.profile-head h5 {
+  color: #333;
+}
+
+.profile-head h6 {
+  color: #0062cc;
+}
+
+.profile-edit-btn {
+  border: none;
+  border-radius: 1.5rem;
+  width: 70%;
+  padding: 2%;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+.proile-rating {
+  font-size: 15px;
+  color: #818182;
+  margin-top: 5%;
+}
+
+.proile-rating span {
+  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.profile-head .nav-tabs {
+  margin-bottom: 5%;
+}
+
+.profile-head .nav-tabs .nav-link {
+  font-weight: 600;
+  border: none;
+}
+
+.profile-head .nav-tabs .nav-link.active {
+  border: none;
+  border-bottom: 2px solid #0062cc;
+}
+
+.profile-work {
+  padding: 14%;
+  margin-top: -15%;
+}
+
+.profile-work p {
+  font-size: 12px;
+  color: #818182;
+  font-weight: 600;
+  margin-top: 10%;
+}
+
+.profile-work a {
+  text-decoration: none;
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.profile-work ul {
+  list-style: none;
+}
+
+.profile-tab label {
+  font-weight: 600;
+}
+
+.profile-tab p {
+  font-weight: 600;
+  color: #0062cc;
+}
+
+.display-page-banner {
+  justify-content: center;
+  margin: 10px;
+  padding: 15px;
+  text-align: center;
+  background: white;
+  color: black;
+  font-size: 30px;
+}
+
+.section-title {
+  margin: 10px;
+  font-size: 100px;
+}
+
+.pic {
+  max-width: 100%;
+  max-height: 30 px;
+}
+
+form.is-readonly .btn-save {
+  display: none;
+}
+
+form.is-readonly input[disabled], form.is-readonly textarea[disabled] {
+  cursor: text;
+  background-color: #fff;
+  border-color: transparent;
+  outline-color: transparent;
+  box-shadow: none;
+}
+
+form.is-editing .btn-edit {
+  display: none;
+}

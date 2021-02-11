@@ -1,0 +1,234 @@
+{% extends "base.html" %} {% block title %}Create service{% endblock%} {% block content%}
+
+<div class="container emp-profile">
+
+    <form method="post">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="profile-img">
+                    {% if not service.description_pic %}
+                    <img class="profile-img" src="{{ url_for('static', filename='images/default_service.jpg') }}" alt=""> {% else %}
+                    <img class="profile-img" src="{{ url_for('static', filename='uploads/servises/' + service.description_pic) }}" alt=""> {% endif %}
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="p-4">
+
+                    <p class="lead font-weight-bold">{{service.title}}</p>
+
+                    <div class="mb-3">
+                        <!------<a href=""> <span class="badge purple mr-1">Category 2</span></a>--->
+                    </div>
+
+
+                    <p>{{service.description}}</p>
+
+                    <form class="d-flex justify-content-left">
+                        <!-- Default input -->
+                        <button class="btn btn-primary btn-md my-0 p" type="submit" name="order">Order
+                            <i class="fas fa-shopping-cart ml-1"></i>
+                        </button>
+                    </form>
+                    {% with messages = get_flashed_messages() %} {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <p>{{ message }}</p>
+                        {% endfor %}
+                    </ul>
+                    {% endif %} {% endwith %}
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+<div class="container">
+    <div class="section-title">
+        <h5>Informatiile furnizorului</h5>
+        <hr>
+    </div>
+</div>
+
+
+<!--Main layout-->
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="profile-img">
+                    {% if not profile.profile_pic %}
+                    <img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="" /> {% else %}
+                    <img src="{{ url_for('static', filename='uploads/profile/' + profile.profile_pic) }}" alt="" /> {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="profile-work">
+                            <p>{{user.name}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="profile-head">
+                    <h5>
+                        {{profile.first_name}} {{profile.surname}}
+                    </h5>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Personal info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bio</a>
+                        </li>
+                    </ul>
+                    <div class="col-md-7">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Varsta</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{profile.age}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Tara</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{profile.country}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Oras</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{profile.city}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Numar de telefon</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{profile.phone_number}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{profile.email}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                {{profile.bio}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form method="POST">
+                <div class="col-md-2">
+                    <input type="submit" class="btn btn-warning" name="contact" value="Contacteaza" />
+                </div>
+            </form>
+        </div>
+
+    </form>
+</div>
+
+
+
+<div class="container">
+    <div class="section-title">
+        <h5>More from {{user.name}}</h5>
+        <hr>
+    </div>
+</div>
+
+<div class="container containerz">
+
+    {% for item in services %}
+    <div class="card" style=" border-radius: 18px; box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  font-family: roboto;">
+        <div class="content">
+            <div class="center">
+                {% if not item.description_pic %}
+                <img class="card-img-top" src="{{ url_for('static', filename='images/default_service.jpg') }}" alt="Card image cap" style="border-top-left-radius: 15px;
+                  border-top-right-radius: 15px;"> {% else %}
+                <img class="card-img-top" src="{{ url_for('static', filename='uploads/servises/' + item.description_pic) }}" alt="Card image cap" style="border-top-left-radius: 15px;
+                  border-top-right-radius: 15px;"> {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p class="card-text">{{item.description}}</p>
+
+                </div>
+                <div class="card-stats card3">
+                    <div class="card-stats card3">
+                        <form method="post">
+                            <div class="container">
+                                <input type="submit" class="btn btn-lg btn-warning" name="view" value="View">
+                                <input type="hidden" name="service_id" value={{item.id}}>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="container">
+    <div class="section-title">
+        <h5>What others are saying</h5>
+        <hr>
+    </div>
+</div>
+
+
+<div class="container">
+    {% for item in reviews %}
+    <div class="column">
+        <div class="content">
+            <div class="center">
+                <div class="pb-4">
+                    <div>
+                        {% if all_profiles[item.services_users_id-1].profile_pic %}
+                        <img src="{{ url_for('static', filename='uploads/profile/' + all_profiles[item.services_users_id-1].profile_pic) }}" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40"> {% else %}
+                        <img src="{{ url_for('static', filename='images/default_profile.png') }}" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40"> {% endif %}
+
+                        <div class="text-muted small text-nowrap mt-2">{{all_users[item.services_users_id-1].name}}</div>
+                    </div>
+                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                        <div class="font-weight-bold mb-1">{{item.title}}</div>
+                        {{item.description}}
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

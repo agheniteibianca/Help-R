@@ -1,0 +1,35 @@
+#banner
+{
+    background-image: linear-gradient(to right, $left_banner,$right_banner);
+    color: #fff;
+    padding-top: 2%;
+
+    .promo-title{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700px;
+    font-size: 50px;
+    color: #000000;
+    }
+}
+
+#wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+#container {
+    width: 100%;
+    margin: 0 auto;
+}
+.banner-img {
+    width: 130%;
+}
+.classWithPad {
+     margin:50px; 
+     margin-top: 20px;
+     margin-left:50px; 
+}
+
+.login-form {
+    width: 450px;
+    margin: auto;
+}

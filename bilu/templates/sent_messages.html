@@ -1,0 +1,64 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% extends "base.html" %}
+{% block title %}Create service{% endblock%}
+
+{% block content%}
+
+<div class="container">
+    <div class="section-title">
+        <h5>Inbox</h5>
+        <hr>
+    </div>
+</div>
+<div class="container" style="margin-bottom: 20px;">
+    <form method="post">
+        <input type="submit" class="btn btn btn-warning" name="received" value="Received">
+        <input type="submit" class="btn btn btn-warning active" name="sent" value="Sent">
+    </form>
+</div>
+
+
+
+<div class="container">
+    {% for item in pms %}
+    <div class="column">
+        <div class="content">
+            <div class="center">
+                <div class="pb-4">
+                    <div>
+                        To:   
+                        {% if all_profiles[item.users_id_to-1].profile_pic %}
+                        <img src="{{ url_for('static', filename='uploads/profile/' + all_profiles[item.users_id_to-1].profile_pic) }}"
+                            class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='images/default_profile.png') }}"
+                            class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                        {% endif %}
+
+                        <div class="text-muted small text-nowrap mt-2">{{item.date_time}}</div>
+                    </div>
+                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                        <div class="font-weight-bold mb-1">{{all_users[item.users_id_to-1].name}}</div>
+                        {{item.message}}
+                        <form method="post">
+                            <div class="container" , style="padding-top:10px">
+                                <input type="submit" class="btn btn-warning float-right" name="delete" value="Delete">
+                                <input type="hidden" name="pm_id" value={{item.id}}>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

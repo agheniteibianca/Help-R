@@ -1,0 +1,49 @@
+/*@mixin flex_center($direction){
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+header{
+    @include flex_center(column); 
+    background: $header_color;
+    button{
+        background: $button_color;
+    }
+}*/
+
+
+.navbar{
+    background-image: linear-gradient(to right, $left_banner, $right_banner);
+    min-height: 70px;
+    &__brand{
+        color: black;
+        padding-top: 20px !important;
+        font-size: 50px !important;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 700px;
+        img{
+            padding-left: 40px;
+            width: 150px;
+            height: auto;
+        }
+    }
+    &__toggler{
+        outline:none;
+    }
+    .nav-link{
+    
+    color: #000000 !important;
+    font-weight: 600;
+    font-size: 25px;
+    float: right;
+    text-align:right;
+    line-height: 70px;
+    }
+}
+
+
+
+

@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block title %}Create service{% endblock%} {% block content%}
+
+
+
+
+<div class="display-page-banner">
+    <h1>Services</h1>
+    <form method="post">
+        <div class="category-buttons">
+            <button type="submit" class="btn btn-outline-dark" name="all">All</button>
+            <button type="submit" class="btn btn-outline-dark" name="1">Lifestyle</button>
+            <button type="submit" class="btn btn-outline-dark" name="2">Children</button>
+            <button type="submit" class="btn btn-outline-dark" name="3">Teaching</button>
+            <button type="submit" class="btn btn-outline-dark" name="4">Art</button>
+            <button type="submit" class="btn btn-outline-dark" name="5">Web</button>
+            <button type="submit" class="btn btn-outline-dark" name="6">Business</button>
+            <button type="submit" class="btn btn-outline-dark" name="7">Food</button>
+            <button type="submit" class="btn btn-outline-dark" name="8">Others</button>
+        </div>
+    </form>
+
+    <form action="" method="POST">
+        <div class="inpage-search-bar">
+            <div class="container ">
+                <div class="d-flex ">
+                    <div class="searchbar">
+                        <input type="text" class="search_input" name="aaa" placeholder="Search...">
+                        <button type="submit" class="fas fa-search" name="search"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+<div class="container containerz">
+
+    {% for item in values %} {% if item.category_id == category.id or not category.id %}
+    <div class="card" style=" border-radius: 18px; box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;">
+        <div class="content">
+            <div class="center">
+                {% if not item.description_pic %}
+                <img class="card-img-top" src="{{ url_for('static', filename='images/default_service.jpg') }}" alt="Card image cap" style="border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;"> {% else %}
+                <img class="card-img-top" src="{{ url_for('static', filename='uploads/servises/' + item.description_pic) }}" alt="Card image cap" style="border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;"> {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p class="card-text">{{item.description}}</p>
+                    <p class="card-text"><small class="text-muted">Category:{{all_categories[item.category_id-1].name}}</small></p>
+
+                </div>
+                <div class="card-stats card3">
+                    <form method="post">
+                        <div class="container">
+                            <input type="submit" class="btn btn-lg btn-warning" name="view" value="View">
+                            <input type="hidden" name="service_id" value={{item.id}}>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endif %} {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

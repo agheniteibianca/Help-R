@@ -1,0 +1,263 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% extends "base.html" %} {% block title %}Create service{% endblock%} {% block content%}
+
+<div class="container">
+    <div class="section-title">
+        <h5>My profile</h5>
+        <hr>
+    </div>
+</div>
+<form method="post">
+    <div class="container">
+        <input type="submit" class="btn btn-lg btn-warning" name="inbox" value="My inbox">
+        <input type="submit" class="btn btn-lg btn-warning" name="orders" value="My orders">
+        <input type="submit" class="btn btn-lg btn-dark" name="logout" value="Logout">
+    </div>
+</form>
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="profile-img">
+                    {% if not profile.profile_pic %}
+                    <img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="" />{% else %}
+                    <img src="{{ url_for('static', filename='uploads/profile/' + profile.profile_pic) }}" alt="" /> {% endif %}
+
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="profile-head">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>First name:</label>
+                        </div>
+                        <div class="col-md-10">
+                            {% if edit_mode==0 %}
+                            <p>{{profile.first_name}}</p>
+                            {%else%}
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new_name">
+                            </div>
+                            {%endif%}
+                        </div>
+                        <div class="col-md-2">
+                            <label>Surname:</label>
+                        </div>
+                        <div class="col-md-10">
+                            {% if edit_mode==0 %}
+                            <p>{{profile.surname}}</p>
+                            {%else%}
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="new_surname">
+                            </div>
+                            {%endif%}
+                        </div>
+                    </div>
+                    <h6>
+
+                    </h6>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Personal info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bio</a>
+                        </li>
+
+                    </ul>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Age</label>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        {% if edit_mode==0 %}
+                                        <p>{{profile.age}}</p>
+                                        {%else%}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="new_age">
+                                        </div>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Country</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {% if edit_mode==0 %}
+                                        <p>{{profile.country}}</p>
+                                        {%else%}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="new_country">
+                                        </div>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>City</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {% if edit_mode==0 %}
+                                        <p>{{profile.city}}</p>
+                                        {%else%}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="new_city">
+                                        </div>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Phone number</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {% if edit_mode==0 %}
+                                        <p>{{profile.phone_number}}</p>
+                                        {%else%}
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="new_number">
+                                        </div>
+                                        {%endif%}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{profile.email}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                {% if edit_mode==0 %} {{profile.bio}} {%else%}
+                                <textarea class="form-control" id="text-content" name="new_description" rows="4"></textarea> {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                {% if edit_mode==0 %}
+                <input type="submit" class="btn btn-warning" name="edit" value="Edit" /> {%else%}
+                <input type="submit" class="btn btn-warning" name="done" value="Save" /> {%endif%}
+            </div>
+        </div>
+    </form>
+    <div class="form-row" style="margin-left:70px">
+        <form method="post" action="/myprofile" enctype="multipart/form-data">
+            <dl>
+                <p>
+                    <input type="file" name="file" autocomplete="off" required>
+                </p>
+            </dl>
+            <p>
+                <input type="submit" class="btn btn-warning" name="upload" value="Change profile picture">
+            </p>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section-title">
+        <h5>My services</h5>
+        <hr>
+    </div>
+</div>
+
+<form method="post">
+    <div class="container">
+        <input type="submit" class="btn btn-lg btn-warning" name="create" value="Create a new service">
+    </div>
+</form>
+<div class="container containerz">
+
+    {% for item in services %}
+    <div class="card" style=" border-radius: 18px; box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;">
+        <div class="content">
+            <div class="center">
+                {% if not item.description_pic %}
+                <img class="card-img-top" src="{{ url_for('static', filename='images/default_service.jpg') }}" alt="Card image cap" style="border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;"> {% else %}
+                <img class="card-img-top" src="{{ url_for('static', filename='uploads/servises/' + item.description_pic) }}" alt="Card image cap" style="border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;"> {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p class="card-text">{{item.description}}</p>
+                    <p class="card-text"><small class="text-muted">{{item.is_completed}}</small></p>
+
+                </div>
+                <div class="card-stats card3">
+                    <div class="card-stats card3">
+                        <form method="post">
+                            <div class="container">
+                                <input type="submit" class="btn btn-lg btn-warning" name="delete" value="Delete">
+                                <input type="hidden" name="service_id" value={{item.id}}>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container">
+    <div class="section-title">
+        <h5>Orders I have to complete</h5>
+        <hr>
+    </div>
+</div>
+<div class="container containerz">
+
+    {% for item in orders %}
+    <div class="card" style=" border-radius: 18px; box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;">
+        <div class="content">
+            <div class="center">
+                <div class="card-body">
+                    <h5 class="card-title">{{all_services[item.services_id-1].title}}</h5>
+                    <p class="card-text">For: {{item.users_id}}</p>
+                    <p class="card-text">{{all_services[item.services_id-1].description}}</p>
+
+
+                    {% if item.is_completed %}
+                    <p class="card-text"><small class="text-muted">Completed</small></p>
+                    {%else%}
+                    <p class="card-text"><small class="text-muted">Not completed</small></p>
+                    {% endif %}
+
+                </div>
+                <div class="card-stats card3">
+                    <div class="card-stats card3">
+                        <form method="post">
+                            <div class="container">
+                                <input type="submit" class="btn btn-lg btn-warning" name="mark" value="Mark as completed">
+                                <input type="hidden" name="order_id" value={{item.id}}>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

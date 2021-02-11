@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block title %}Create service{% endblock%} {% block content%}
+
+<div class="container">
+    <div class="section-title">
+        <h5>Create a service</h5>
+        <hr>
+    </div>
+</div>
+
+
+<div class="container">
+    <div style="margin-bottom:20px">
+        <form form action="" method="POST" id="createForm">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="titlu">Title</label>
+                    <input id="titlu" class="form-control full-width" type="text" name="title" placeholder="titlu">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="text-content">Service description</label>
+                <textarea class="form-control" id="text-content" name="description" rows="3"></textarea>
+            </div>
+
+            <select name='comp_select' class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Category</option>
+        <option value="1">Lifestyle</option>
+        <option value="2">Children</option>
+        <option value="3">Teaching</option>
+        <option value="4">Art</option>
+        <option value="5">Web</option>
+        <option value="6">Business</option>
+        <option value="7">Food</option>
+        <option value="8">Others</option>
+      </select>
+
+
+        </form>
+    </div>
+
+
+    <div class="form-row">
+        <form method="post" action="/create_service" enctype="multipart/form-data">
+            <dl>
+                <p>
+                    <input type="file" name="file" autocomplete="off" required>
+                </p>
+            </dl>
+            <p>
+                <input type="submit" class="btn btn-secondary" name="upload" value="Upload">
+            </p>
+        </form>
+    </div>
+
+    <div class="form-row">
+        {% if filename %}
+        <div>
+            <img src="{{ url_for('services.display_image', filename=filename) }}">
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-row">
+        <div class="form-group"></div>
+        <div style="margin: auto">
+            <input type="submit" class="btn btn-secondary" name="add" value="Add a service!" form="createForm"></input>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,4 @@
+pyhton
+flask
+flask-sqlalchemy
+sqlalchemy-utils-0.36.8

@@ -1,0 +1,32 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% extends "base.html" %} {% block title %}Create service{% endblock%} {% block content%}
+
+<div class="container">
+    <div class="section-title">
+        <h5>Compose message</h5>
+        <hr>
+    </div>
+</div>
+<div class="container">
+    <div style="margin-bottom:20px">
+        <form form action="" method="POST" id="createForm">
+
+            <div class="form-group">
+                <label for="text-content">Body:</label>
+                <textarea class="form-control" id="text-content" name="body" rows="10"></textarea>
+            </div>
+
+
+            <div class="container">
+                <input type="submit" class="btn btn-warning" name="send" value="Send" style="float: right;">
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

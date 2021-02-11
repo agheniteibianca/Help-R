@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+
+
+<html>
+
+<head>
+    <title>bbno$</title>
+
+</head>
+
+<body>
+
+
+    {% block content%}
+
+    <!----------------banner section--------->
+    <section id="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="promo-title">The first (and best) service exchange platform in Romania!</p>
+                    <P>Sign up to book a service!</P>
+                    <!---
+                    <div class="container h-100">
+                        <div class="d-flex  h-100">
+                            <div class="searchbar">
+                                <input class="search_input" type="text" name="" placeholder="Search...">
+                                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                            </div>
+                        </div>
+                    </div>---->
+
+                </div>
+
+                <div class="col-md-6">
+
+
+                    <h1 class="text-center">Login</h1>
+                    <hr>
+                    <form action="" method="POST" class="login-form classWithPad">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Username</label>
+                            <input type="text" class="form-control" name="nm">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" name="pw">
+                        </div>
+
+                        {% with messages = get_flashed_messages() %} {% if messages %}
+                        <ul class=flashes>
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %} {% endwith %}
+                        <button type="submit" class="btn btn-dark" name="login">Login</button>
+                        <button type="submit" class="btn btn-dark" name="register">Sign up</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!----------------THE WAVE--------->
+        <div id="bilu">
+            <div id="wrapper">
+                <div id="container">
+                    <img class="banner-img" src="{{ url_for('static', filename='images/mywave_flipped.png') }}" alt="N.A.L.A. Apparel"></a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    {% endblock%}
+
+
+</body>
+
+</html>
